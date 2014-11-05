@@ -1,0 +1,40 @@
+Interpreter Project
+
+This project will be to write an interpreter for a minimal form of Eiffel. 
+This minimal form of Eiffel has only 1 data type, integer, and the only identifiers are single letters 
+(i.e. there are only 26 possible identifiers since Eiffel is not case sensitive).
+
+The interpreter will parse the Eiffel program and build some intermediate data structures. 
+These data structures will then be interpreted to execute the program. All tokens in this 
+language are separated by white space. The parsing algorithm should detect any syntactical 
+or semantic error. The first such error discovered should cause an appropriate error message 
+to be printed, and then the interpreter should terminate. Run-time errors should also be detected 
+with appropriate error messages being printed.
+
+Parser
+<feature> ? feature <id> is do <compound> end
+<compound> ? <statement> | <compound>  <statement> 
+<statement> ? <assignment_statement> | <print_statement> | <if_statement> | <loop_statement>
+<if_statement> ? if <boolean_expression> then <compound> else <compound> end 
+<assignment_statement> ? <id> assignment_operator <expression>
+<print_statement> ? print  ( <expression>  )
+<loop_statement> ? from <assignment_statement> until <boolean_expression> loop <compound> end 
+<boolean_expression> ? <relational_operator> <expression> <expression>
+<relational_operator> ? le_operator | lt_operator | ge_operator | gt_operator | eq_operator | ne_operator
+<expression> ? <arithmetic_operator> <expression> <expression> | <id> | literal_integer
+<arithmetic_operator> ? add_operator | sub_operator | mul_operator | div_operator
+
+Lexical Analyzer
+id ? letter
+literal_integer ? digit literal_integer | digit
+assignment_operator ? :=
+le_operator ? <=
+lt_operator ? <
+ge_operator ? >=
+gt_operator ? >
+eq_operator ? =
+ne_operator ? /=
+add_operator ? +
+sub_operator ? -
+mul_operator ? *
+div_operator ? /
